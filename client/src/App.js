@@ -1,21 +1,21 @@
 import React from 'react';
-import Sidebar from './components/Sidebar';
-import CharacterForm from './components/CharacterForm';
-import CharacterDetails from './components/CharacterDetails';
-import BackstoryForm from './components/BackstoryForm';
-import SettingForm from './components/SettingForm';
-import CustomSectionForm from './components/CustomSectionForm';
+// import Sidebar from './components/Sidebar';
+// import CharacterForm from './components/CharacterForm';
+// import CharacterDetails from './components/CharacterDetails';
+// import BackstoryForm from './components/BackstoryForm';
+// import SettingForm from './components/SettingForm';
+// import CustomSectionForm from './components/CustomSectionForm';
 
 function App() {
   return (
     <div className="App">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="main">
-        <CharacterForm />
+        {/* <CharacterForm />
         <CharacterDetails />
         <BackstoryForm />
         <SettingForm />
-        <CustomSectionForm />
+        <CustomSectionForm /> */}
       </div>
     </div>
   );
