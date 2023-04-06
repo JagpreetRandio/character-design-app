@@ -11,7 +11,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^2.1.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -21,7 +21,6 @@
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
- 
   "browserslist": {
     "production": [
       ">0.2%",
@@ -35,6 +34,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-react-app": "^7.0.1"
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-jsx-a11y": "6.5.1"
   }
 }

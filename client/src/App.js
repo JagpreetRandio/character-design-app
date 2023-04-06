@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import SettingForm from './components/SettingForm';
 // import CustomSectionForm from './components/CustomSectionForm';
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
           {/* // } */}
         </BrowserRouter>

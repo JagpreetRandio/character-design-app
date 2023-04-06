@@ -33,6 +33,28 @@ export const isAuthenticated = () => {
   return token && decode(token).exp > Date.now() / 1000;
 };
 
+// Signup user and store JWT token
+export const signup = async (username, password) => {
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setToken(data.token);
+        console.log(data.token)
+      }
+      return { ok: response.ok, message: data.message };
+    } catch (error) {
+      console.error(error);
+    }
+    
+  };
+
 // Login user and store JWT token
 export const login = async (email, password) => {
   try {
