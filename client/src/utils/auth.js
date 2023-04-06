@@ -32,3 +32,23 @@ export const isAuthenticated = () => {
   // Check if token is valid and not expired
   return token && decode(token).exp > Date.now() / 1000;
 };
+
+// Login user and store JWT token
+export const login = async (email, password) => {
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setToken(data.token);
+    }
+    return { ok: response.ok, message: data.message };
+  } catch (error) {
+    console.error(error);
+  }
+};
