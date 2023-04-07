@@ -1,10 +1,12 @@
-import React from "react";
+import React from 'react';
 
 
 const Homepage = () => {
   return (
-    <p>HOME</p>
+    <div className="sidebar">
+      <h2>HOME</h2>
+    </div>
   );
-};
+}
 
 export default Homepage;

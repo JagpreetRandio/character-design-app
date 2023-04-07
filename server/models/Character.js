@@ -16,11 +16,11 @@ const CharacterSchema = new Schema({
   },
   gender: {
     type: String,
-    enum: ['male', 'female', 'non-binary']
+    enum: ['male', 'female', 'non-binary','agender', 'genderfluid','other']
   },
   pronoun: {
     type: String,
-    enum: ['he/him', 'she/her', 'they/them']
+    enum: ['he/him', 'he/they', "she/they", "he/they", "they/he", "he/her", "he/they/she", "she/they/he", "they/she/he", "they/he/she", "they/she", 'she/her', 'they/them']
   },
   physical: [
     {
@@ -59,6 +59,6 @@ const CharacterSchema = new Schema({
   ]
 });
 
-const CharacterModel = model('Character', CharacterSchema);
+const Character = model('Character', CharacterSchema);
 
-module.exports = CharacterModel;
+module.exports = Character;
