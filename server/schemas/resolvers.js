@@ -5,11 +5,11 @@ const { User, Character } = require("../models");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("characters");
+      return User.find().exec();
     },
 
     user: async (parent, { id }) => {
-      return User.findById(id).populate("characters");
+      return User.findById(id).exec();
     },
 
     //retrieve the logged in user without specifically searching for them
@@ -21,7 +21,7 @@ const resolvers = {
     // },
 
     characters: async () => {
-      return Character.find().populate("user");
+      return Character.find().exec();
     },
 
     character: async (parent, { id }) => {
