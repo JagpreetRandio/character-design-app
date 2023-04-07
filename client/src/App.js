@@ -8,11 +8,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import CustomSectionForm from './components/CustomSectionForm';
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+
+const client = new ApolloClient({
+  // link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
     <div className="App">
       <div className="main">
+      <ApolloProvider client={client}>
         <BrowserRouter>
           {/* {isAuth ? */}
 
@@ -22,6 +34,7 @@ function App() {
           </Routes>
           {/* // } */}
         </BrowserRouter>
+        </ApolloProvider>
       </div>
     </div>
   );

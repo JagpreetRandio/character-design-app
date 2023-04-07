@@ -1,76 +1,45 @@
 import decode from 'jwt-decode';
 
-const TOKEN_KEY = 'jwtToken';
-
-// Store JWT token in local storage
-export const setToken = token => {
-  localStorage.setItem(TOKEN_KEY, token);
-};
-
-// Get JWT token from local storage
-export const getToken = () => {
-  return localStorage.getItem(TOKEN_KEY);
-};
-
-// Remove JWT token from local storage
-export const removeToken = () => {
-  localStorage.removeItem(TOKEN_KEY);
-};
-
-// Decode JWT token and return user data
-export const getUser = () => {
-  const token = getToken();
-  if (token) {
-    return decode(token);
+class AuthService {
+  getProfile() {
+    return decode(this.getToken());
   }
-  return null;
-};
 
-// Check if user is authenticated
-export const isAuthenticated = () => {
-  const token = getToken();
-  // Check if token is valid and not expired
-  return token && decode(token).exp > Date.now() / 1000;
-};
+  loggedIn() {
+    // Checks if there is a saved token and it's still valid
+    const token = this.getToken();
+    return !!token && !this.isTokenExpired(token);
+  }
 
-// Signup user and store JWT token
-export const signup = async (username, password) => {
+  isTokenExpired(token) {
     try {
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setToken(data.token);
-        console.log(data.token)
-      }
-      return { ok: response.ok, message: data.message };
-    } catch (error) {
-      console.error(error);
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
+    } catch (err) {
+      return false;
     }
-    
-  };
-
-// Login user and store JWT token
-export const login = async (email, password) => {
-  try {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    });
-    const data = await response.json();
-    if (response.ok) {
-      setToken(data.token);
-    }
-    return { ok: response.ok, message: data.message };
-  } catch (error) {
-    console.error(error);
   }
-};
+
+  getToken() {
+    // Retrieves the user token from localStorage
+    return localStorage.getItem('id_token');
+  }
+
+  login(idToken) {
+    // Saves user token to localStorage
+    localStorage.setItem('id_token', idToken);
+
+    window.location.assign('/');
+  }
+
+  logout() {
+    // Clear user token and profile data from localStorage
+    localStorage.removeItem('id_token');
+    // this will reload the page and reset the state of the application
+    window.location.assign('/');
+  }
+}
+
+export default new AuthService();
