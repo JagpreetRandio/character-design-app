@@ -19,12 +19,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  skills: [
-    {
-      type: String,
-      trim: true,
-    },
-  ],
 });
 
 // set up pre-save middleware to create password
