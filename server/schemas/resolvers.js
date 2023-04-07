@@ -52,23 +52,7 @@ const resolvers = {
         const token = signToken(User);
         return { token, User };
       },
-  
-      addSkill: async (parent, { UserId, skill }, context) => {
-        if (context.user) {
-          return User.findOneAndUpdate(
-            { _id: User },
-            {
-              $addToSet: { skills: skill },
-            },
-            {
-              new: true,
-              runValidators: true,
-            }
-          );
-        }
-        //throw an error
-        throw new AuthenticationError('You need to be logged in!');
-      },
+
       // user can only remove their profile and no one else's
       removeUser: async (parent, args, context) => {
         if (context.user) {
@@ -77,23 +61,21 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       },
 
-      // not sure if this correct 
+      // 
       addCharacter: async (parent, {name, backgroundDescription, age, gender, pronoun, physical, personality }) => {
         const User = await Character.create({name, backgroundDescription, age, gender, pronoun, physical, personality});
         return Character;
       },
 
-      // I feel like this is correct? Maybe?
+      
       removeCharacter: async (parent, {characterId}) => {
-        const character = await Character.findByIdAndRemove(characterId);
-        return character;
+        return Character = await Character.findOneAndDelete(characterId);
+      
       },
-
-      // um again im not sure
+      
       updateCharacter: async (parent, {characterId}) =>{
-        const character = await Character.findOneAndUpdate(characterId);
-        return character;
-
+        return Character = await Character.findOneAndUpdate(characterId);
+  
       }
 
     },
