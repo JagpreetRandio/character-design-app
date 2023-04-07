@@ -13,7 +13,7 @@ const CharacterSchema = new Schema(
         trim: true
       },
       age: {
-        type: String
+        type: Int
       },
       gender: {
         type: String
