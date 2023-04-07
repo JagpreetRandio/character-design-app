@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
-// import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar';
 // import CharacterForm from './components/CharacterForm';
 // import CharacterDetails from './components/CharacterDetails';
 // import BackstoryForm from './components/BackstoryForm';
@@ -16,6 +16,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import CharacterDetails from "./components/CharacterDetails";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -38,7 +39,7 @@ const client = new ApolloClient({
 
 
 function App() {
-  const isAuth = false; // replace with your authentication logic
+  const isAuth = true; // replace with your authentication logic
 
   return (
     <div className="App">
@@ -47,14 +48,18 @@ function App() {
           <BrowserRouter>
             {isAuth ? (
               <>
-                {/* <Sidebar /> */}
+                <Sidebar />
                 <Routes>
                   <Route path="/" element={<Homepage />} />
-                  {/* <Route path="/character-form" element={<CharacterForm />} />
+
+                  {/* <Route path="/character-form" element={<CharacterForm />} /> */}
+
                   <Route path="/character-details" element={<CharacterDetails />} />
-                  <Route path="/backstory-form" element={<BackstoryForm />} />
-                  <Route path="/setting-form" element={<SettingForm />} />
-                  <Route path="/custom-section-form" element={<CustomSectionForm />} /> */}
+
+                  {/* <Route path="/backstory-form" element={<BackstoryForm />} /> */}
+
+                  {/* <Route path="/setting-form" element={<SettingForm />} />*/}
+                  {/* <Route path="/custom-section-form" element={<CustomSectionForm />} /> */}
                 </Routes>
               </>
             ) : (

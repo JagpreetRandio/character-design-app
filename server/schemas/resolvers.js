@@ -1,15 +1,15 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Character } = require('../models');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Character } = require("../models");
 
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('characters')
+      return User.find().populate("characters");
     },
 
     user: async (parent, { id }) => {
-      return User.findById(id).populate('characters');
+      return User.findById(id).populate("characters");
     },
 
     //retrieve the logged in user without specifically searching for them
@@ -21,12 +21,12 @@ const resolvers = {
     // },
 
     characters: async () => {
-      return Character.find().populate('characters');
+      return Character.find().populate("user");
     },
 
     character: async (parent, { id }) => {
       return Character.findById(id);
-    }
+    },
   },
 
   Mutation: {
@@ -40,13 +40,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user with this email found!');
+        throw new AuthenticationError("No user with this email found!");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect password!');
+        throw new AuthenticationError("Incorrect password!");
       }
 
       const token = signToken(user);
@@ -58,23 +58,66 @@ const resolvers = {
       if (context.user) {
         return User.findByIdAndDelete(context.user._id);
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
 
-    // 
-    addCharacter: async (parent, {name, backgroundDescription, age, gender, pronoun, physical, personality }) => {
-      const character = await Character.create({name, backgroundDescription, age, gender, pronoun, physical, personality});
+    //
+    addCharacter: async (
+      parent,
+      {
+        name,
+        backgroundDescription,
+        age,
+        gender,
+        pronoun,
+        physical,
+        personality,
+      }
+    ) => {
+      const character = await Character.create({
+        name,
+        backgroundDescription,
+        age,
+        gender,
+        pronoun,
+        physical,
+        personality,
+      });
       return character;
     },
 
-    removeCharacter: async (parent, {id}) => {
+    removeCharacter: async (parent, { id }) => {
       return Character.findByIdAndDelete(id);
     },
 
-    updateCharacter: async (parent, {id, name, backgroundDescription, age, gender, pronoun, physical, personality}) =>{
-      const updatedCharacter = await Character.findByIdAndUpdate(id, {name, backgroundDescription, age, gender, pronoun, physical, personality}, {new: true});
+    updateCharacter: async (
+      parent,
+      {
+        id,
+        name,
+        backgroundDescription,
+        age,
+        gender,
+        pronoun,
+        physical,
+        personality,
+      }
+    ) => {
+      const updatedCharacter = await Character.findByIdAndUpdate(
+        id,
+        {
+          name,
+          backgroundDescription,
+          age,
+          gender,
+          pronoun,
+          physical,
+          personality,
+        },
+        { new: true }
+      );
       return updatedCharacter;
-    }
+    },
   },
 };
 
