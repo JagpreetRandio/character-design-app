@@ -1,26 +1,25 @@
-const { gql } = require('apollo-server');
-
+const { gql } = require('apollo-server-express');
 
 const characterTypeDefs = gql`
-type Character {
+  type Character {
     _id: ID
     name: String
     age: Int
     gender: String
     pronoun: String
-    description: String
-}
-    type Query {
-    characters: [character]!
-    character(id: ID!): character
-}
+    backgroundDescription: String
+  }
 
-    type Mutation {
-    addCharacter(name: String!, age: Int!, gender: String!, pronoun: String!, description: String!) Character
+  type Query {
+    characters: [Character]!
+    character(id: ID!): Character
+  }
 
-    removeCharacter(CharacterId: ID!): Character
-}
-
+  type Mutation {
+    addCharacter(name: String!, age: Int!, gender: String!, pronoun: String!, backgroundDescription: String!): Character
+    removeCharacter(characterId: ID!): Character
+    updateCharacter(characterId: ID!): Character
+  }
 `;
 
 module.exports = characterTypeDefs;

@@ -3,82 +3,79 @@ const { User, Character } = require('../models');
 
 
 const resolvers = {
-    Query: {
-      Users: async () => {
-        return User.find().populate('characters')
-      },
-  
-      User: async (parent, { User }) => {
-        return User.findOne({ User }).populate('characters');
-      },
-      
-      //retrieve the logged in user without specifically searching for them
-      me: async (parent, args, context) => {
-        if (context.user) {
-          return User.findOne({ _id: context.user._id });
-        }
-        throw new AuthenticationError('You need to be logged in!');
-      },
-
-      Characters: async (parent, { User }) => {
-        return Character.findbyId({ User }).populate('characters');
-      },
-
-      Character: async (parent, {characterId}) => {
-        return Character.findOne({ _id: characterId });
-      }
+  Query: {
+    users: async () => {
+      return User.find().populate('characters')
     },
-  
-    Mutation: {
-      addUser: async (parent, { name, email, password }) => {
-        const User = await User.create({ name, email, password });
-        const token = signToken(User);
-  
-        return { token, User };
-      },
-      login: async (parent, { email, password }) => {
-        const User = await User.findOne({ email });
-  
-        if (!User) {
-          throw new AuthenticationError('No user with this email found!');
-        }
-  
-        const correctPw = await User.isCorrectPassword(password);
-  
-        if (!correctPw) {
-          throw new AuthenticationError('Incorrect password!');
-        }
-  
-        const token = signToken(User);
-        return { token, User };
-      },
 
-      // user can only remove their profile and no one else's
-      removeUser: async (parent, args, context) => {
-        if (context.user) {
-          return User.findOneAndDelete({ _id: context.user._id });
-        }
-        throw new AuthenticationError('You need to be logged in!');
-      },
+    user: async (parent, { id }) => {
+      return User.findById(id).populate('characters');
+    },
 
-      // 
-      addCharacter: async (parent, {name, backgroundDescription, age, gender, pronoun, physical, personality }) => {
-        const User = await Character.create({name, backgroundDescription, age, gender, pronoun, physical, personality});
-        return Character;
-      },
+    //retrieve the logged in user without specifically searching for them
+    // me: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findById(context.user._id);
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
 
-      
-      removeCharacter: async (parent, {characterId}) => {
-        return Character = await Character.findOneAndDelete(characterId);
-      
-      },
-      
-      updateCharacter: async (parent, {characterId}) =>{
-        return Character = await Character.findOneAndUpdate(characterId);
-  
+    characters: async () => {
+      return Character.find().populate('characters');
+    },
+
+    character: async (parent, { id }) => {
+      return Character.findById(id);
+    }
+  },
+
+  Mutation: {
+    addUser: async (parent, { name, email, password }) => {
+      const user = await User.create({ name, email, password });
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('No user with this email found!');
       }
 
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
+
+      const token = signToken(user);
+      return { token, user };
     },
-  };
-  
-  module.exports = resolvers;
+
+    // user can only remove their profile and no one else's
+    removeUser: async (parent, args, context) => {
+      if (context.user) {
+        return User.findByIdAndDelete(context.user._id);
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    // 
+    addCharacter: async (parent, {name, backgroundDescription, age, gender, pronoun, physical, personality }) => {
+      const character = await Character.create({name, backgroundDescription, age, gender, pronoun, physical, personality});
+      return character;
+    },
+
+    removeCharacter: async (parent, {id}) => {
+      return Character.findByIdAndDelete(id);
+    },
+
+    updateCharacter: async (parent, {id, name, backgroundDescription, age, gender, pronoun, physical, personality}) =>{
+      const updatedCharacter = await Character.findByIdAndUpdate(id, {name, backgroundDescription, age, gender, pronoun, physical, personality}, {new: true});
+      return updatedCharacter;
+    }
+  },
+};
+
+module.exports = resolvers;
