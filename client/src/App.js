@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Sidebar from './components/Sidebar';
+// import Header from "./components/Header";
 // import CharacterForm from './components/CharacterForm';
 // import CharacterDetails from './components/CharacterDetails';
 // import BackstoryForm from './components/BackstoryForm';
@@ -17,9 +18,13 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import CharacterDetails from "./components/CharacterDetails";
+import 'bootswatch/dist/sketchy/bootstrap.min.css'; // Added this :boom:
+import './assets/css/bootstrap.css';
+
+
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -49,6 +54,7 @@ function App() {
             {isAuth ? (
               <>
                 <Sidebar />
+                {/* <Header/> */}
                 <Routes>
                   <Route path="/" element={<Homepage />} />
 
