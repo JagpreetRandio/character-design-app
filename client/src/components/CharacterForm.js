@@ -10,9 +10,9 @@ const CharacterForm = ({ onClose, onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(name, age, gender, pronoun, backgroundDescription);
+    onSubmit(name, Number(age), gender, pronoun, backgroundDescription);
   };
-console.log("MODAL WHERE ARE YOUUUU")
+
   return (
     <div className="modal" style={{display: 'block'}}>
         <div className="modal-dialog" role="document">
