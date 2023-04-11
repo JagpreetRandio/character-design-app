@@ -43,6 +43,7 @@ const client = new ApolloClient({
 });
 
 
+
 function App() {
   const isAuth = true; // replace with your authentication logic
 
@@ -61,7 +62,7 @@ function App() {
 
                   {/* <Route path="/character-form" element={<CharacterForm />} /> */}
 
-                  <Route path="/character-details" element={<CharacterDetails />} />
+                <Route path={`/character-details/:CharacterId`} element={<CharacterDetails />} />
 
                   {/* <Route path="/backstory-form" element={<BackstoryForm />} /> */}
 

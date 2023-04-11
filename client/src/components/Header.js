@@ -71,9 +71,9 @@ function refreshPage() {
           style={{ display: "block" }}
         >
           <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header text-dark bg-light">
-                <h5 className="modal-title bg-light">Characterize Credits</h5>
+            <div className="modal-content padding-10px">
+             
+                <h1 className="modal-title bg-light padding-10px">Characterize Credits</h1>
                 <button
                   type="button"
                   className="btn-close"
@@ -83,7 +83,7 @@ function refreshPage() {
                 >
                   <span aria-hidden="true"></span>
                 </button>
-              </div>
+             
               <div className="modal-body ">
                 <div>
                   <h2 className="text-dark">Rose Cassidy</h2>
@@ -106,16 +106,14 @@ function refreshPage() {
                   <div>
                 </div>
               </div>
-              <div className="modal-footer text-dark bg-light">
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="btn btn-secondary margin-10px"
                   data-bs-dismiss="modal"
                   onClick={handleCloseModal}
                 >
                   Close
                 </button>
-              </div>
             </div>
           </div>
         </div>
