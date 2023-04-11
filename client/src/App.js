@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Sidebar from './components/Sidebar';
-// import Header from "./components/Header";
+import Header from "./components/Header";
 // import CharacterForm from './components/CharacterForm';
 // import CharacterDetails from './components/CharacterDetails';
 // import BackstoryForm from './components/BackstoryForm';
@@ -48,15 +48,16 @@ function App() {
 
   return (
     <div className="App">
+        <Header />
       <div className="main">
         <ApolloProvider client={client}>
           <BrowserRouter>
             {isAuth ? (
               <>
                 <Sidebar />
-                {/* <Header/> */}
                 <Routes>
                   <Route path="/" element={<Homepage />} />
+                
 
                   {/* <Route path="/character-form" element={<CharacterForm />} /> */}
 
