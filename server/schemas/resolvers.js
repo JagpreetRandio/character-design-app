@@ -86,33 +86,35 @@ const resolvers = {
       return character;
     },
 
-    removeCharacter: async (parent, { id }) => {
+    removeCharacter: async (parent, {characterId: id}) => {
+
+      console.log("CharacterID: ", id);
       return Character.findByIdAndDelete(id);
     },
 
     updateCharacter: async (
       parent,
       {
-        id,
+        characterId,
         name,
         backgroundDescription,
         age,
         gender,
         pronoun,
-        physical,
-        personality,
+        // physical,
+        // personality,
       }
     ) => {
       const updatedCharacter = await Character.findByIdAndUpdate(
-        id,
+        characterId,
         {
           name,
           backgroundDescription,
           age,
           gender,
           pronoun,
-          physical,
-          personality,
+          // physical,
+          // personality,
         },
         { new: true }
       );
