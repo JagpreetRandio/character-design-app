@@ -11,7 +11,7 @@ const CharacterForm = ({ onClose, onSubmit }) => {
   const [updatedCharacter, setUpdatedCharacter] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(name, age, gender, pronoun, backgroundDescription);
+    onSubmit(name, Number(age), gender, pronoun, backgroundDescription);
   };
 
   const handleBackstoryChange = (updatedBackstory) => {
@@ -21,7 +21,7 @@ const CharacterForm = ({ onClose, onSubmit }) => {
     });
   };
 
-console.log("MODAL WHERE ARE YOUUUU")
+
   return (
     <div className="modal" style={{display: 'block'}}>
         <div className="modal-dialog" role="document">
