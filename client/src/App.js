@@ -5,7 +5,7 @@ import Sidebar from './components/Sidebar';
 // import Header from "./components/Header";
 // import CharacterForm from './components/CharacterForm';
 // import CharacterDetails from './components/CharacterDetails';
-// import BackstoryForm from './components/BackstoryForm';
+import BackstoryForm from './components/BackstoryForm';
 // import SettingForm from './components/SettingForm';
 // import CustomSectionForm from './components/CustomSectionForm';
 import Login from "./components/Login";
@@ -20,6 +20,7 @@ import { setContext } from '@apollo/client/link/context';
 import CharacterDetails from "./components/CharacterDetails";
 import 'bootswatch/dist/sketchy/bootstrap.min.css'; // Added this :boom:
 import './assets/css/bootstrap.css';
+import Backstory from "./components/BackstoryForm";
 
 
 
@@ -56,13 +57,14 @@ function App() {
                 <Sidebar />
                 {/* <Header/> */}
                 <Routes>
+              
                   <Route path="/" element={<Homepage />} />
 
                   {/* <Route path="/character-form" element={<CharacterForm />} /> */}
 
                   <Route path="/character-details" element={<CharacterDetails />} />
 
-                  {/* <Route path="/backstory-form" element={<BackstoryForm />} /> */}
+                  <Route path="/backstory-form" element={<BackstoryForm />} />
 
                   {/* <Route path="/setting-form" element={<SettingForm />} />*/}
                   {/* <Route path="/custom-section-form" element={<CustomSectionForm />} /> */}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../assets/css/index.css"
+import BackstoryForm from "./BackstoryForm";
 
 const CharacterForm = ({ onClose, onSubmit }) => {
   const [name, setName] = useState("");
@@ -7,11 +8,19 @@ const CharacterForm = ({ onClose, onSubmit }) => {
   const [gender, setGender] = useState("");
   const [pronoun, setPronoun] = useState("");
   const [backgroundDescription, setBackgroundDescription] = useState("");
-
+  const [updatedCharacter, setUpdatedCharacter] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(name, age, gender, pronoun, backgroundDescription);
   };
+
+  const handleBackstoryChange = (updatedBackstory) => {
+    setUpdatedCharacter({
+      ...updatedCharacter,
+      backstory: updatedBackstory,
+    });
+  };
+
 console.log("MODAL WHERE ARE YOUUUU")
   return (
     <div className="modal" style={{display: 'block'}}>
@@ -78,6 +87,12 @@ console.log("MODAL WHERE ARE YOUUUU")
             onChange={(event) => setBackgroundDescription(event.target.value)}
           ></textarea>
         </div>
+        <BackstoryForm
+        backstory={updatedCharacter.backstory}
+        onChange={handleBackstoryChange}
+      />
+      <br>
+      </br>
         <button type="submit">Add Character</button>
         <button type="button" onClick={onClose}>
           Cancel

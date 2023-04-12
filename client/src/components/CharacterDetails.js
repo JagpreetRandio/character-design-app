@@ -9,6 +9,7 @@ const CharacterDetails = () => {
       <p>Gender:</p>
       <p>Pronoun:</p>
       <p>Description:</p>
+      <p>Backstory</p>
     </div>
   );
 }
