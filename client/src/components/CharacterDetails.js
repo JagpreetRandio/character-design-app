@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { MUTATION_UPDATE_CHARACTER, QUERY_CHARACTER, MUTATION_REMOVE_CHARACTER } from "../utils/queries";
 
-const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
+const CharacterDetails = () => {
   const [updateCharacter] = useMutation(MUTATION_UPDATE_CHARACTER);
   const [removeCharacter] = useMutation(MUTATION_REMOVE_CHARACTER);
   const { CharacterId } = useParams();
@@ -13,7 +13,14 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
   const [gender, setGender] = useState("");
   const [pronoun, setPronoun] = useState("");
   const [backgroundDescription, setBackgroundDescription] = useState("");
-  
+
+  const resetForm = () => {
+    setName("");
+    setAge("");
+    setGender("");
+    setPronoun("");
+    setBackgroundDescription("");
+  }
 
   const {
     loading,
@@ -36,22 +43,27 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
       },
     });
     setIsEditing(false);
-    onUpdate();
+    resetForm();
   };
 
   const handleDelete = async () => {
+    if (!character || !character.character || !character.character._id) {
+      console.log("Invalid character id");
+      return;
+    }
+    
     await removeCharacter({
       variables: {
         characterId: character.character._id
       },
     });
-    onRemove(character.character._id);
   };
 
-  const handleClose = () => {
-    setIsEditing(false);
-    onClose();
-  };
+  // const handleClose = () => {
+  //   setIsEditing(false);
+  //   onClose();
+  //   resetForm();
+  // };
 
   if (loading) {
     console.log("Loading...");
@@ -84,7 +96,8 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
             Name:
             <input
               type="text"
-              value={name|| initialName}
+              placeholder={initialName}
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </label>
@@ -92,7 +105,8 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
             Age:
             <input
               type="text"
-              value={age || initialAge}
+              placeholder={initialAge}
+              value={age}
               onChange={(e) => setAge(e.target.value)}
             />
           </label>
@@ -100,7 +114,8 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
             Gender:
             <input
               type="text"
-              value={gender || initialGender}
+              placeholder={initialGender}
+              value={gender}
               onChange={(e) => setGender(e.target.value)}
             />
           </label>
@@ -108,7 +123,8 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
             Pronoun: 
             <input
               type="text"
-              value={pronoun || initialPronoun}
+              placeholder={initialPronoun}
+              value={pronoun}
               onChange={(e) => setPronoun(e.target.value)}
             />
           </label>
@@ -116,7 +132,8 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
             Description:
             <input
               type="text"
-              value={backgroundDescription || initialBackgroundDescription}
+              placeholder={initialBackgroundDescription}
+              value={backgroundDescription}
               onChange={(e) => setBackgroundDescription(e.target.value)}
             />
           </label>
@@ -138,8 +155,7 @@ const CharacterDetails = ({ onClose, onRemove, onUpdate }) => {
           <p>Pronoun:{character.character.pronoun}</p>
           <p>Description: {character.character.backgroundDescription}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={() => handleDelete(_id)}>Delete</button>
-          <button onClick={() => handleClose()}>Close</button>
+          <button onClick={() => handleDelete(character.character._id)}>Delete</button>
         </>
       )}
     </div>
