@@ -93,26 +93,26 @@ const resolvers = {
     updateCharacter: async (
       parent,
       {
-        id,
+        characterId,
         name,
         backgroundDescription,
         age,
         gender,
         pronoun,
-        physical,
-        personality,
+        // physical,
+        // personality,
       }
     ) => {
       const updatedCharacter = await Character.findByIdAndUpdate(
-        id,
+        characterId,
         {
           name,
           backgroundDescription,
           age,
           gender,
           pronoun,
-          physical,
-          personality,
+          // physical,
+          // personality,
         },
         { new: true }
       );

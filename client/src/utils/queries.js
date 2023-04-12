@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_CHARACTERS = gql`
   query getCharacters {
@@ -27,8 +27,20 @@ export const QUERY_CHARACTER = gql`
 `;
 
 export const MUTATION_ADD_CHARACTER = gql`
-  mutation addCharacter($name: String!, $age: Int!, $gender: String!, $pronoun: String!, $backgroundDescription: String!) {
-    addCharacter(name: $name, age: $age, gender: $gender, pronoun: $pronoun, backgroundDescription: $backgroundDescription) {
+  mutation addCharacter(
+    $name: String!
+    $age: Int!
+    $gender: String!
+    $pronoun: String!
+    $backgroundDescription: String!
+  ) {
+    addCharacter(
+      name: $name
+      age: $age
+      gender: $gender
+      pronoun: $pronoun
+      backgroundDescription: $backgroundDescription
+    ) {
       _id
       name
       age
@@ -53,8 +65,22 @@ export const MUTATION_REMOVE_CHARACTER = gql`
 `;
 
 export const MUTATION_UPDATE_CHARACTER = gql`
-  mutation updateCharacter($characterId: ID!, $name: String, $age: Int, $gender: String, $pronoun: String, $backgroundDescription: String) {
-    updateCharacter(characterId: $characterId, name: $name, age: $age, gender: $gender, pronoun: $pronoun, backgroundDescription: $backgroundDescription) {
+  mutation updateCharacter(
+    $characterId: ID!
+    $name: String!
+    $age: Int!
+    $gender: String!
+    $pronoun: String!
+    $backgroundDescription: String!
+  ) {
+    updateCharacter(
+      characterId: $characterId
+      name: $name
+      age: $age
+      gender: $gender
+      pronoun: $pronoun
+      backgroundDescription: $backgroundDescription
+    ) {
       _id
       name
       age
@@ -105,12 +131,21 @@ export const MUTATION_REMOVE_USER = gql`
 `;
 
 export const MUTATION_UPDATE_USER = gql`
-  mutation updateUser($userId: ID!, $name: String, $email: String, $password: String) {
-    updateUser(userId: $userId, name: $name, email: $email, password: $password) {
+  mutation updateUser(
+    $userId: ID!
+    $name: String
+    $email: String
+    $password: String
+  ) {
+    updateUser(
+      userId: $userId
+      name: $name
+      email: $email
+      password: $password
+    ) {
       _id
       name
       email
     }
   }
 `;
-
