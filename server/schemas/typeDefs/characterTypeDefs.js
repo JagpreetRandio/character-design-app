@@ -18,7 +18,7 @@ const characterTypeDefs = gql`
   type Mutation {
     addCharacter(name: String!, age: Int!, gender: String!, pronoun: String!, backgroundDescription: String!): Character
     removeCharacter(characterId: ID!): Character
-    updateCharacter(characterId: ID!): Character
+    updateCharacter(characterId: ID!, name: String!, age: Int!, gender: String!, pronoun: String!, backgroundDescription: String!): Character
   }
 `;
 
