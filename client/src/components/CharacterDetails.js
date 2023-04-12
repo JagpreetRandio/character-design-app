@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { MUTATION_UPDATE_CHARACTER, QUERY_CHARACTER, MUTATION_REMOVE_CHARACTER } from "../utils/queries";
+import { MUTATION_UPDATE_CHARACTER, QUERY_CHARACTER,QUERY_CHARACTERS, MUTATION_REMOVE_CHARACTER } from "../utils/queries";
 
 const CharacterDetails = () => {
   const [updateCharacter] = useMutation(MUTATION_UPDATE_CHARACTER);
@@ -13,6 +13,7 @@ const CharacterDetails = () => {
   const [gender, setGender] = useState("");
   const [pronoun, setPronoun] = useState("");
   const [backgroundDescription, setBackgroundDescription] = useState("");
+  const navigate = useNavigate();
 
   const resetForm = () => {
     setName("");
@@ -26,10 +27,28 @@ const CharacterDetails = () => {
     loading,
     error,
     data: character,
+    refetch,
   } = useQuery(QUERY_CHARACTER, {
     variables: { id: CharacterId },
     skip: !CharacterId,
   });
+
+  useEffect(() => {
+    if (character) {
+      const {
+        name: initialName,
+        age: initialAge,
+        gender: initialGender,
+        pronoun: initialPronoun,
+        backgroundDescription: initialBackgroundDescription,
+      } = character.character;
+      setName(initialName);
+      setAge(initialAge);
+      setGender(initialGender);
+      setPronoun(initialPronoun);
+      setBackgroundDescription(initialBackgroundDescription);
+    }
+  }, [character]);
 
   const handleUpdate = async () => {
     await updateCharacter({
@@ -44,6 +63,7 @@ const CharacterDetails = () => {
     });
     setIsEditing(false);
     resetForm();
+    refetch();
   };
 
   const handleDelete = async () => {
@@ -52,12 +72,25 @@ const CharacterDetails = () => {
       return;
     }
     
-    await removeCharacter({
+    removeCharacter({
       variables: {
         characterId: character.character._id
       },
-    });
+      refetchQueries: [{ query: QUERY_CHARACTERS }]
+    }).then(() => {
+      // handle delete success
+      navigate("/");    }).catch(() => {
+      // handle failure
+     return(
+      <div>
+        <h3>
+            Sorry, something went wrong! We weren't able to delete your character at this time.
+        </h3>
+      </div>
+     )
+    })
   };
+
 
   // const handleClose = () => {
   //   setIsEditing(false);

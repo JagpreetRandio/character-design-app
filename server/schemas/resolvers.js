@@ -86,7 +86,9 @@ const resolvers = {
       return character;
     },
 
-    removeCharacter: async (parent, { id }) => {
+    removeCharacter: async (parent, {characterId: id}) => {
+
+      console.log("CharacterID: ", id);
       return Character.findByIdAndDelete(id);
     },
 
