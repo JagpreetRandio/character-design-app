@@ -1,21 +1,32 @@
 import React, { useState } from "react";
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_BACKSTORY, SAVE_BACKSTORY } from "../utils/queries";
 
+const BackstoryForm = () => {
+  const { loading, error, data, refetch } = useQuery(GET_BACKSTORY);
 
-const BackstoryForm = ({ backstory, onChange }) => {
   const [editing, setEditing] = useState(false);
-  const [updatedBackstory, setUpdatedBackstory] = useState(backstory);
+  const [updatedBackstory, setUpdatedBackstory] = useState(data?.backstory);
+  const [saveBackstory] = useMutation(SAVE_BACKSTORY, {
+    onCompleted: () => {
+      setEditing(false);
+      refetch();
+    },
+    onError: (error) => {
+      console.error(error);
+    }
+  });
 
   const handleEditClick = () => {
     setEditing(true);
   };
 
-  const handleSaveClick = () => {
-    onChange(updatedBackstory);
-    setEditing(false);
+  const handleSaveClick = async () => {
+    await saveBackstory({ variables: { backstory: updatedBackstory } });
   };
 
   const handleCancelClick = () => {
-    setUpdatedBackstory(backstory);
+    setUpdatedBackstory(data?.backstory);
     setEditing(false);
   };
 
@@ -23,12 +34,15 @@ const BackstoryForm = ({ backstory, onChange }) => {
     setUpdatedBackstory(event.target.value);
   };
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
   return (
     <div>
       {!editing ? (
         <div>
           <h3>Backstory</h3>
-          <p>{backstory}</p>
+          <p>{data?.backstory}</p>
           <button onClick={handleEditClick}>Edit</button>
         </div>
       ) : (
