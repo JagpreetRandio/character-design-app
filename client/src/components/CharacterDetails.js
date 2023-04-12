@@ -123,6 +123,14 @@ const CharacterDetails = () => {
   return (
     <div>
       <h1>Character Details</h1>
+      <p>Character name: {character.character.name}</p>
+      <p>Age: {character.character.age}</p>
+      <p>Gender: {character.character.gender}</p>
+      <p>Pronoun: {character.character.pronoun}</p>
+      <p>Description: {character.character.backgroundDescription}</p>
+      {/* <button onClick={() => onRemove(character.character._id)}>Delete</button>
+      <button onClick={() => onClose()}>Close</button> */}
+      <p>Backstory</p>
       {isEditing ? (
         <>
           <label>
