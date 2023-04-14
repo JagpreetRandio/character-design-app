@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import Auth from "../utils/auth";
-// import '../assets/index.css'
+import "../assets/css/header.css";
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,44 +18,43 @@ const Header = () => {
     window.location.reload(false);
   }
 
-  // return(
-  //   <>
-  //   <Nav className="navbar navbar-expand-lg text-dark bg-light">
-  //   <h1>Hi</h1>
-  //   </Nav>
-  //   </>
-  // )
-
   return (
     <>
-      <Navbar
-        id="homepageNavbar"
-        className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary"
-      >
-        <div className="bg-primary container-fluid d-flex justify-content-around align-items-baseline">
-          <h1 className="bg-primary text-light" href="#">
-            Characterize
-          </h1>
-          <h5 className="bg-primary text-info">
-            ONE SITE FOR ALL YOUR CHARACTER'S DETAILS!
-          </h5>
-          {/* <Navbar.Toggle aria-controls="navbarNav" /> */}
-          <Button
-           className="btn btn-secondary my-2 my-sm-0"
-            onClick={handleCreditsClick}
-          >
-            Credits
-          </Button>
-          <Button
-            id="logoutBtn"
-            className="btn btn-danger my-2 my-sm-0"
-            onClick={() => {
-              Auth.logout();
-              refreshPage();
-            }}
-          >
-            Logout
-          </Button>
+      <Navbar className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div
+          id="header"
+          className="bg-primary container-fluid align-items-baseline justify-content-around"
+        >
+          <Navbar.Brand>
+            <h1 className="bg-primary text-light" href="#">
+              Characterize
+            </h1>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              <h5 className="bg-primary text-info">
+                ONE SITE FOR ALL YOUR CHARACTER'S DETAILS!
+              </h5>
+              {/* <Navbar.Toggle aria-controls="navbarNav" /> */}
+              <Button
+                className="btn btn-secondary my-2 my-sm-0"
+                onClick={handleCreditsClick}
+              >
+                Credits
+              </Button>
+              <Button
+                id="logoutBtn"
+                className="btn btn-danger my-2 my-sm-0"
+                onClick={() => {
+                  Auth.logout();
+                  refreshPage();
+                }}
+              >
+                Logout
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
         </div>
       </Navbar>
 
@@ -120,7 +119,11 @@ const Header = () => {
                   <h2 className="text-light">Jagpreet Randio</h2>
                   <p>--insert credits--</p>
                 </div>
-                <a  className="text-light" href="https://github.com/JagpreetRandio" target=".">
+                <a
+                  className="text-light"
+                  href="https://github.com/JagpreetRandio"
+                  target="."
+                >
                   Github
                 </a>
                 <div></div>

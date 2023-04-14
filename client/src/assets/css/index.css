@@ -1,6 +1,41 @@
-.modal-dialog {
+.sidebar {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #f7f7f7;
   }
+  
+  /* Main content */
+  .main {
+    margin-top: 100px;
+    margin-left: 250px; /* Sidebar width */
+    padding: 20px;
+  }
+  
+  /* Login and Signup */
+  .login,
+  .signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Responsive design */
+  @media only screen and (max-width: 768px) {
+    /* Sidebar */
+    .sidebar {
+      position: static;
+      height: auto;
+      width:100vmax;
+      padding-top:0px;
+      margin: 0px;
+    }
+    /* Main content */
+    .main {
+      margin-left: 0;
+    }
+  }
+  

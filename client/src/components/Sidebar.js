@@ -9,6 +9,8 @@ import {
   MUTATION_REMOVE_CHARACTER,
   MUTATION_UPDATE_CHARACTER,
 } from "../utils/queries";
+import '../assets/css/sidebar.css'
+import '../assets/css/index.css'
 
 const Sidebar = () => {
   console.log("Rendering Sidebar...");
@@ -103,11 +105,12 @@ const Sidebar = () => {
   console.log("Rendering character list:", data.characters);
   return (
     <>
-      <div className="sidebar"> 
+      <div className="sidebar bg-secondary" style={{ top: 0, bottom: 0 }}>
           <button className="btn btn-success" onClick={handleNewCharacterClick}>New Character</button>
-        <div className="sidebar-characters">
+        <div className="sidebar-characters text-light">
           {data.characters.map((character) => (
             <div
+            style={{ cursor: "pointer", padding: "5px", fontSize:"30px"}}
               key={character._id}
               onClick={() => handleCharacterClick(character)}
             >
