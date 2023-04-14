@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { MUTATION_UPDATE_CHARACTER, QUERY_CHARACTER,QUERY_CHARACTERS, MUTATION_REMOVE_CHARACTER } from "../utils/queries";
-import BackstoryForm from "./BackstoryForm";
+// import BackstoryForm from "./BackstoryForm";
 const CharacterDetails = () => {
   const [updateCharacter] = useMutation(MUTATION_UPDATE_CHARACTER);
   const [removeCharacter] = useMutation(MUTATION_REMOVE_CHARACTER);
@@ -12,16 +12,19 @@ const CharacterDetails = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [pronoun, setPronoun] = useState("");
+  const [personality, setPersonality] = useState("");
+  const [physicalDescription, setPhysicalDescription] = useState("");
   const [backgroundDescription, setBackgroundDescription] = useState("");
-  const [updatedCharacter, setUpdatedCharacter] = useState("");
+  // const [updatedCharacter, setUpdatedCharacter] = useState("");
   const navigate = useNavigate();
 
-  const handleBackstoryChange = (updatedBackstory) => {
-    setUpdatedCharacter({
-      ...updatedCharacter,
-      backstory: updatedBackstory,
-    });
-  };
+
+  // const handleBackstoryChange = (updatedBackstory) => {
+  //   setUpdatedCharacter({
+  //     ...updatedCharacter,
+  //     backstory: updatedBackstory,
+  //   });
+  // };
 
   const resetForm = () => {
     setName("");
@@ -29,6 +32,8 @@ const CharacterDetails = () => {
     setGender("");
     setPronoun("");
     setBackgroundDescription("");
+    setPersonality("");
+    setPhysicalDescription("");
   }
 
   const {
@@ -49,12 +54,16 @@ const CharacterDetails = () => {
         gender: initialGender,
         pronoun: initialPronoun,
         backgroundDescription: initialBackgroundDescription,
+        personality: initialPersonality,
+        physicalDescription: initialPhysicalDescription
       } = character.character;
       setName(initialName);
       setAge(initialAge);
       setGender(initialGender);
       setPronoun(initialPronoun);
       setBackgroundDescription(initialBackgroundDescription);
+      setPersonality(initialPersonality);
+      setPhysicalDescription(initialPhysicalDescription);
     }
   }, [character]);
 
@@ -67,6 +76,8 @@ const CharacterDetails = () => {
         gender: gender ? gender : character.character.gender,
         pronoun: pronoun ? pronoun : character.character.pronoun,
         backgroundDescription: backgroundDescription ? backgroundDescription : character.character.backgroundDescription,
+        personality: personality ? personality : character.character.personality,
+        physicalDescription: physicalDescription ? physicalDescription : character.character.physicalDescription
       },
     });
     setIsEditing(false);
@@ -126,6 +137,8 @@ const CharacterDetails = () => {
     gender: initialGender,
     pronoun: initialPronoun,
     backgroundDescription: initialBackgroundDescription,
+    personality: initialPersonality,
+    physicalDescription: initialPhysicalDescription
   } = character.character;
 
   // const handleBackstoryChange = (updatedBackstory) => {
@@ -179,12 +192,31 @@ const CharacterDetails = () => {
             />
           </label>
           <label>
-            Description:
+            Backstory:
             <input
               type="text"
               placeholder={initialBackgroundDescription}
               value={backgroundDescription}
               onChange={(e) => setBackgroundDescription(e.target.value)}
+            />
+          </label>
+          <label>
+            Personality:
+            <input
+              type="text"
+              placeholder={initialPersonality}
+              value={personality}
+              onChange={(e) => setPersonality(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Physical Description:
+            <input
+              type="text"
+              placeholder={initialPhysicalDescription}
+              value={physicalDescription}
+              onChange={(e) => setPhysicalDescription(e.target.value)}
             />
           </label>
 
@@ -203,13 +235,15 @@ const CharacterDetails = () => {
           <p> Age: {character.character.age}</p>
           <p> Gender: {character.character.gender}</p>
           <p> Pronoun:{character.character.pronoun}</p>
-          <p> Description: {character.character.backgroundDescription}</p>
+          <p> Backstory: {character.character.backgroundDescription}</p>
+          <p> Personality: {character.character.personality}</p>
+          <p> Physical Description: {character.character.physicalDescription}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
           <button onClick={() => handleDelete(character.character._id)}>Delete</button>
-          <BackstoryForm
+          {/* <BackstoryForm
            backstory={updatedCharacter.backstory}
            onChange={handleBackstoryChange}
-            />
+            /> */}
         </>
       )}
     </div>

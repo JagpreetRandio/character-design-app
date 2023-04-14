@@ -8,16 +8,18 @@ const CharacterForm = ({ onClose, onSubmit }) => {
   const [gender, setGender] = useState("");
   const [pronoun, setPronoun] = useState("");
   const [backgroundDescription, setBackgroundDescription] = useState("");
+  const [personality, setPersonality] = useState("");
+  const [physicalDescription, setPhysicalDescription] = useState("");
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(name, Number(age), gender, pronoun, backgroundDescription);
+    onSubmit(name, Number(age), gender, pronoun, backgroundDescription, personality, physicalDescription);
   };
 
   return (
     <div className="modal" style={{display: 'block'}}>
         <div className="modal-dialog bg-light" role="document">
-          <div className="modal-conten bg-light">
+          <div className="modal-content bg-light">
             <div className="modal-header text-dark ">
               <h5 className="modal-title text-primary ">Input your character's details!</h5>
               <button
@@ -49,7 +51,7 @@ const CharacterForm = ({ onClose, onSubmit }) => {
         <div className="text-center">
           <label htmlFor="age">Age:</label>
           <input
-            type="text"
+            type="number"
             id="age"
             value={age}
             onChange={(event) => setAge(event.target.value)}
@@ -67,7 +69,7 @@ const CharacterForm = ({ onClose, onSubmit }) => {
           />
         </div>
         <br>
-        </br>
+        </br> 
         <div className="text-center">
           <label htmlFor="pronoun">Pronoun:</label>
           <input
@@ -80,17 +82,45 @@ const CharacterForm = ({ onClose, onSubmit }) => {
         <br>
         </br>
         <div className="text-center">
-          <label htmlFor="backgroundDescription">Background Description:</label>
+          <label htmlFor="backgroundDescription">Backstory:</label>
           <textarea 
             id="backgroundDescription"
             value={backgroundDescription}
             onChange={(event) => setBackgroundDescription(event.target.value)}
           ></textarea>
         </div>
-        <div class="text-center">
-        <button class="btn btn-primary" type="submit">Add Character</button>
-       <button class="btn btn-primary" type="button" onClick={onClose}>Cancel</button>
-</div>
+
+        <br>
+        </br>
+
+        <div className="text-center">
+          <label htmlFor="personality">Personality:</label>
+          <textarea 
+            id="personality"
+            value={personality}
+            onChange={(event) => setPersonality(event.target.value)}
+          ></textarea>
+        </div>
+
+        <br>
+        </br>
+
+        <div className="text-center">
+          <label htmlFor="physicalDescription">Physical Description:</label>
+          <textarea 
+            id="physicalDescription"
+            value={physicalDescription}
+            onChange={(event) => setPhysicalDescription(event.target.value)}
+          ></textarea>
+        </div>
+
+        <br>
+        </br>
+
+        <div className="text-center">
+        <button className="btn btn-primary" type="submit">Add Character</button>
+        <button className="btn btn-primary" type="button" onClick={onClose}>Cancel</button>
+        </div>
       </form>
     </div>
             
