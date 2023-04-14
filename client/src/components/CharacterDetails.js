@@ -199,11 +199,11 @@ const CharacterDetails = () => {
         </>
       ) : (
         <>
-          <p>Character name: {character.character.name}</p>
-          <p>Age: {character.character.age}</p>
-          <p>Gender: {character.character.gender}</p>
-          <p>Pronoun:{character.character.pronoun}</p>
-          <p>Description: {character.character.backgroundDescription}</p>
+          <p> Character name: {character.character.name}</p>
+          <p> Age: {character.character.age}</p>
+          <p> Gender: {character.character.gender}</p>
+          <p> Pronoun:{character.character.pronoun}</p>
+          <p> Description: {character.character.backgroundDescription}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
           <button onClick={() => handleDelete(character.character._id)}>Delete</button>
           <BackstoryForm

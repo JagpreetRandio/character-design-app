@@ -16,10 +16,10 @@ const CharacterForm = ({ onClose, onSubmit }) => {
 
   return (
     <div className="modal" style={{display: 'block'}}>
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Input your character's details!</h5>
+        <div className="modal-dialog bg-light" role="document">
+          <div className="modal-conten bg-light">
+            <div className="modal-header text-dark ">
+              <h5 className="modal-title text-primary ">Input your character's details!</h5>
               <button
                 type="button"
                 className="btn-close"
@@ -33,9 +33,9 @@ const CharacterForm = ({ onClose, onSubmit }) => {
               
               
     <div className="modal-content">
-      <h2>Add New Character</h2>
+      <h2 className="text-center ">Add New Character</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="text-center">
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -44,7 +44,9 @@ const CharacterForm = ({ onClose, onSubmit }) => {
             onChange={(event) => setName(event.target.value)}
           />
         </div>
-        <div>
+        <br>
+        </br>
+        <div className="text-center">
           <label htmlFor="age">Age:</label>
           <input
             type="text"
@@ -53,7 +55,9 @@ const CharacterForm = ({ onClose, onSubmit }) => {
             onChange={(event) => setAge(event.target.value)}
           />
         </div>
-        <div>
+        <br>
+        </br>
+        <div className="text-center">
           <label htmlFor="gender">Gender:</label>
           <input
             type="text"
@@ -62,7 +66,9 @@ const CharacterForm = ({ onClose, onSubmit }) => {
             onChange={(event) => setGender(event.target.value)}
           />
         </div>
-        <div>
+        <br>
+        </br>
+        <div className="text-center">
           <label htmlFor="pronoun">Pronoun:</label>
           <input
             type="text"
@@ -71,18 +77,20 @@ const CharacterForm = ({ onClose, onSubmit }) => {
             onChange={(event) => setPronoun(event.target.value)}
           />
         </div>
-        <div>
+        <br>
+        </br>
+        <div className="text-center">
           <label htmlFor="backgroundDescription">Background Description:</label>
-          <textarea
+          <textarea 
             id="backgroundDescription"
             value={backgroundDescription}
             onChange={(event) => setBackgroundDescription(event.target.value)}
           ></textarea>
         </div>
-        <button type="submit">Add Character</button>
-        <button type="button" onClick={onClose}>
-          Cancel
-        </button>
+        <div class="text-center">
+        <button class="btn btn-primary" type="submit">Add Character</button>
+       <button class="btn btn-primary" type="button" onClick={onClose}>Cancel</button>
+</div>
       </form>
     </div>
             
