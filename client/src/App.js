@@ -5,7 +5,7 @@ import Sidebar from './components/Sidebar';
 import Header from "./components/Header";
 // import CharacterForm from './components/CharacterForm';
 // import CharacterDetails from './components/CharacterDetails';
-import BackstoryForm from './components/BackstoryForm';
+// import BackstoryForm from './components/BackstoryForm';
 // import SettingForm from './components/SettingForm';
 // import CustomSectionForm from './components/CustomSectionForm';
 import Login from "./components/Login";
@@ -67,7 +67,7 @@ function App() {
 
                 <Route path={`/character-details/:CharacterId`} element={<CharacterDetails />} />
 
-                  <Route path="/backstory-form" element={<BackstoryForm />} />
+                  {/* <Route path="/backstory-form" element={<BackstoryForm />} /> */}
 
                   {/* <Route path="/setting-form" element={<SettingForm />} />*/}
                   {/* <Route path="/custom-section-form" element={<CustomSectionForm />} /> */}
