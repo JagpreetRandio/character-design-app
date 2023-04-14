@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
+import Auth from "../utils/auth";
 
 
 const Header = () => {
@@ -53,8 +54,13 @@ function refreshPage() {
               </Nav.Link>
               <Button
                 id="logoutBtn"
+
+                className="btn btn-secondary my-2 my-sm-0" 
+                onClick={() => Auth.logout()}>
+
                 className="btn btn-primary" 
                 onClick={refreshPage}>
+
               
                 Logout
               </Button>
