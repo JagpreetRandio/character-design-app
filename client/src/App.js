@@ -20,7 +20,7 @@ import { setContext } from '@apollo/client/link/context';
 import CharacterDetails from "./components/CharacterDetails";
 import 'bootswatch/dist/sketchy/bootstrap.min.css'; // Added this :boom:
 import './assets/css/bootstrap.css';
-import Backstory from "./components/BackstoryForm";
+// import Backstory from "./components/BackstoryForm";
 
 
 

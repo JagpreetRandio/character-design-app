@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { MUTATION_UPDATE_CHARACTER, QUERY_CHARACTER,QUERY_CHARACTERS, MUTATION_REMOVE_CHARACTER } from "../utils/queries";
-
+import BackstoryForm from "./BackstoryForm";
 const CharacterDetails = () => {
   const [updateCharacter] = useMutation(MUTATION_UPDATE_CHARACTER);
   const [removeCharacter] = useMutation(MUTATION_REMOVE_CHARACTER);
@@ -13,7 +13,15 @@ const CharacterDetails = () => {
   const [gender, setGender] = useState("");
   const [pronoun, setPronoun] = useState("");
   const [backgroundDescription, setBackgroundDescription] = useState("");
+  const [updatedCharacter, setUpdatedCharacter] = useState("");
   const navigate = useNavigate();
+
+  const handleBackstoryChange = (updatedBackstory) => {
+    setUpdatedCharacter({
+      ...updatedCharacter,
+      backstory: updatedBackstory,
+    });
+  };
 
   const resetForm = () => {
     setName("");
@@ -120,17 +128,18 @@ const CharacterDetails = () => {
     backgroundDescription: initialBackgroundDescription,
   } = character.character;
 
+  // const handleBackstoryChange = (updatedBackstory) => {
+  //   setUpdatedCharacter({
+  //     ...updatedCharacter,
+  //     backstory: updatedBackstory,
+  //   });
+  // };
+
   return (
     <div>
       <h1>Character Details</h1>
-      <p>Character name: {character.character.name}</p>
-      <p>Age: {character.character.age}</p>
-      <p>Gender: {character.character.gender}</p>
-      <p>Pronoun: {character.character.pronoun}</p>
-      <p>Description: {character.character.backgroundDescription}</p>
       {/* <button onClick={() => onRemove(character.character._id)}>Delete</button>
       <button onClick={() => onClose()}>Close</button> */}
-      <p>Backstory</p>
       {isEditing ? (
         <>
           <label>
@@ -190,13 +199,17 @@ const CharacterDetails = () => {
         </>
       ) : (
         <>
-          <p>Character name: {character.character.name}</p>
-          <p>Age: {character.character.age}</p>
-          <p>Gender: {character.character.gender}</p>
-          <p>Pronoun:{character.character.pronoun}</p>
-          <p>Description: {character.character.backgroundDescription}</p>
+          <p> Character name: {character.character.name}</p>
+          <p> Age: {character.character.age}</p>
+          <p> Gender: {character.character.gender}</p>
+          <p> Pronoun:{character.character.pronoun}</p>
+          <p> Description: {character.character.backgroundDescription}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
           <button onClick={() => handleDelete(character.character._id)}>Delete</button>
+          <BackstoryForm
+           backstory={updatedCharacter.backstory}
+           onChange={handleBackstoryChange}
+            />
         </>
       )}
     </div>

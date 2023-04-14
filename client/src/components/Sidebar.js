@@ -104,8 +104,8 @@ const Sidebar = () => {
   return (
     <>
       <div className="sidebar">
-        <div className="sidebar-header">
-          <button onClick={handleNewCharacterClick}>New Character</button>
+        <div className="sidebar-header btn bg-success disabled">
+          <button className="btn btn-success disabled" onClick={handleNewCharacterClick}>New Character</button>
         </div>
         <div className="sidebar-characters">
           {data.characters.map((character) => (

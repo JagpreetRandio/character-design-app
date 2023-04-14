@@ -164,3 +164,21 @@ export const MUTATION_UPDATE_USER = gql`
     }
   }
 `;
+
+export const SAVE_BACKSTORY = gql`
+  mutation saveBackstory($backstory: String!) {
+    saveBackstory(backstory: $backstory) {
+      _id
+      backstory
+    }
+  }
+`;
+
+export const GET_BACKSTORY = gql`
+  query GetBackstory {
+    backstory {
+      _id
+      backstory
+    }
+  }
+`;

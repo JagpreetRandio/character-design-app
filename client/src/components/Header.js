@@ -34,28 +34,33 @@ function refreshPage() {
     
       <Navbar
         id="homepageNavbar"
-        className="navbar navbar-expand-lg text-dark bg-light"
+        className="navbar navbar-expand-lg navbar-dark bg-primary"
       >
-        <div className="bg-light container-fluid">
-          <h1 className="bg-light" href="#">
+        <div className="bg-primary container-fluid">
+          <h1 className="bg-primary text-light" href="#">
             Characterize
           </h1>
           <Navbar.Toggle aria-controls="navbarNav" />
-          <Navbar.Collapse className="bg-light" id="navbarNav">
-            <Nav className="bg-light mr-auto">
-              <Nav.Link className="bg-light text-dark nav-link-expand" href="#">
+          <Navbar.Collapse className="bg-primary" id="navbarNav">
+            <Nav className="mr-auto">
+              <Nav.Link className="text-light bg-primary nav-link-expand" href="#">
                 CREATE!
               </Nav.Link>
               <Nav.Link
-                className="bg-light nav-link-expand"
+                className=" nav-link-expand text-light bg-primary"
                 onClick={handleCreditsClick}
               >
                 Credits
               </Nav.Link>
               <Button
                 id="logoutBtn"
+
                 className="btn btn-secondary my-2 my-sm-0" 
                 onClick={() => Auth.logout()}>
+
+                className="btn btn-primary" 
+                onClick={refreshPage}>
+
               
                 Logout
               </Button>
@@ -74,7 +79,7 @@ function refreshPage() {
           <div className="modal-dialog" role="document">
             <div className="modal-content padding-10px">
              
-                <h1 className="modal-title bg-light padding-10px">Characterize Credits</h1>
+                <h1 className="modal-title text-light bg-dark padding-10px">Characterize Credits</h1>
                 <button
                   type="button"
                   className="btn-close"
