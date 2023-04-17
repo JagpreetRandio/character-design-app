@@ -5,21 +5,27 @@ import Auth from '../utils/auth';
 import { MUTATION_ADD_USER } from '../utils/queries';
 
 function Signup() {
+    // Initialize the state of the form
 const [formState, setFormState] = useState({ name: '',  email: '', password: '' });
+
+  // Use a GraphQL mutation to add a user to the database
 const [addUser, { error }] = useMutation(MUTATION_ADD_USER);
 
+  // Handle the form submission
 const handleFormSubmit = async (event) => {
 event.preventDefault();
 try {
 const { data } = await addUser({
 variables: formState
 });
+// Store the token in localStorage and redirect to the homepage
 Auth.login(data.addUser.token);
 } catch (e) {
 console.error(e);
 }
 };
 
+// Handle changes to the form fields
 const handleChange = (event) => {
 const { name, value } = event.target;
 setFormState({
@@ -28,6 +34,7 @@ setFormState({
 });
 };
 
+// Render the signup form
 return (
 <div className="container my-1">
 <Link to="/">← Go to Login</Link>
@@ -45,17 +52,7 @@ return (
         onChange={handleChange}
       />
     </div>
-    {/* <div className="flex-row space-between my-2">
-      <label htmlFor="lastName">Last Name:</label>
-      <input
-        placeholder="Last"
-        name="lastName"
-        type="text"
-        id="lastName"
-        value={formState.lastName}
-        onChange={handleChange}
-      />
-    </div> */}
+   
     <div className="flex-row space-between my-2">
       <label htmlFor="email">Email:</label>
       <input

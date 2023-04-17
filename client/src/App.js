@@ -1,12 +1,12 @@
+// Import necessary modules
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Sidebar from './components/Sidebar';
 import Header from "./components/Header";
+// import BackstoryForm from './components/BackstoryForm';
 // import CharacterForm from './components/CharacterForm';
 // import CharacterDetails from './components/CharacterDetails';
-// import BackstoryForm from './components/BackstoryForm';
-// import SettingForm from './components/SettingForm';
 // import CustomSectionForm from './components/CustomSectionForm';
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -18,17 +18,20 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import CharacterDetails from "./components/CharacterDetails";
+
+// Import styles
 import 'bootswatch/dist/sketchy/bootstrap.min.css'; // Added this :boom:
 import './assets/css/bootstrap.css';
-// import Backstory from "./components/BackstoryForm";
+import './assets/css/index.css'
 
 
 
+// Create a HTTP link to the GraphQL server
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
 });
 
-
+// Create an auth link that adds the authorization token to the headers
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -39,15 +42,17 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+// Create a new Apollo client with the auth link and in-memory cache
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-
+// Define the main App component
 function App() {
-  // const isAuth = false; // replace with your authentication logic
+  // Check if the user is authenticated by checking for the presence of the token in local storage
   const isAuth = localStorage.getItem('id_token');
+  // Render the app's UI
 
   return (
     <div className="App">
@@ -61,16 +66,9 @@ function App() {
                 <Routes>
               
                   <Route path="/" element={<Homepage />} />
-                
-
-                  {/* <Route path="/character-form" element={<CharacterForm />} /> */}
-
+              
                 <Route path={`/character-details/:CharacterId`} element={<CharacterDetails />} />
 
-                  {/* <Route path="/backstory-form" element={<BackstoryForm />} /> */}
-
-                  {/* <Route path="/setting-form" element={<SettingForm />} />*/}
-                  {/* <Route path="/custom-section-form" element={<CustomSectionForm />} /> */}
                 </Routes>
               </>
             ) : (
@@ -86,4 +84,5 @@ function App() {
   );
 }
 
+// Export the App component as the default export
 export default App;

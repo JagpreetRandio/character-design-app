@@ -3,8 +3,8 @@ import React from 'react';
 
 const Homepage = () => {
   return (
-    <div className="sidebar">
-      <h2>HOME</h2>
+    <div className='justify-content-center'>
+      <h1>CREATE AND DEVELOP YOUR CHARACTERS NOW!</h1>
     </div>
   );
 }
