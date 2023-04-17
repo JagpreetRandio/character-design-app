@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Characterize
+2023
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
+* [Description](#description)
+* [Installation](#installation)
+* [Deployment](#deployment)
+* [Screenshots](#screenshots)
+* [Usage](#usage)
+* [Contact Us](#contact-us)
+* [License](#license)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Create a character by entering the prompts. Pick their name, gender, pronoun, physical description, create their backstory, and their own unique personality!  
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To install the Characterize application, follow the steps below:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository
+ - https://github.com/rcass13/character-design-app
 
-### `npm test`
+2. Install the Dependencies 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+``` npm i ```
 
-### `npm run build`
+3. Run the application 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+``` npm run develop ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Create your character! Enjoy! 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+add deployment link here 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Screenshots/videos 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Usage 
 
-## Learn More
+- Create an account 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Click on the the "New Character" button 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Start creating your own character
 
-### Code Splitting
+- Want to change up your character? 
+    - That's easy! Simply click on the character you'd like to edit.
+    - Make your changes
+    - Save your changes!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- If you want to create your own character field
+    - Click on a character
+    - Fill out the the empty fields
+    - Submit!
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact Us
 
-### Making a Progressive Web App
+Jagpreet Randio 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Email- jagpreet9219@gmail.com
 
-### Advanced Configuration
+Github- https://github.com/JagpreetRandio
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Rose Cassidy 
 
-### Deployment
+Email- 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Github- https://github.com/rcass13 
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License 
