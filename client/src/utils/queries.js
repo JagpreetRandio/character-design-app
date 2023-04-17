@@ -11,6 +11,7 @@ export const QUERY_CHARACTERS = gql`
       backgroundDescription
       personality
       physicalDescription
+      custom
     }
   }
 `;
@@ -26,6 +27,7 @@ export const QUERY_CHARACTER = gql`
       backgroundDescription
       personality
       physicalDescription
+      custom
     }
   }
 `;
@@ -39,6 +41,7 @@ export const MUTATION_ADD_CHARACTER = gql`
     $backgroundDescription: String!
     $physicalDescription: String!
     $personality: String!
+    $custom: String!
   ) {
     addCharacter(
       name: $name
@@ -48,6 +51,7 @@ export const MUTATION_ADD_CHARACTER = gql`
       backgroundDescription: $backgroundDescription
       physicalDescription: $physicalDescription
       personality: $personality
+      custom: $custom
     ) {
       _id
       name
@@ -57,6 +61,7 @@ export const MUTATION_ADD_CHARACTER = gql`
       backgroundDescription
       physicalDescription
       personality
+      custom
     }
   }
 `;
@@ -72,6 +77,7 @@ export const MUTATION_REMOVE_CHARACTER = gql`
       backgroundDescription
       physicalDescription
       personality
+      custom
     }
   }
 `;
@@ -86,6 +92,7 @@ export const MUTATION_UPDATE_CHARACTER = gql`
     $backgroundDescription: String!
     $physicalDescription: String!
     $personality: String!
+    $custom: String!
   ) {
     updateCharacter(
       characterId: $characterId
@@ -96,6 +103,7 @@ export const MUTATION_UPDATE_CHARACTER = gql`
       backgroundDescription: $backgroundDescription
       physicalDescription: $physicalDescription
       personality: $personality
+      custom: $custom
     ) {
       _id
       name
@@ -105,6 +113,7 @@ export const MUTATION_UPDATE_CHARACTER = gql`
       backgroundDescription
       physicalDescription
       personality
+      custom
     }
   }
 `;

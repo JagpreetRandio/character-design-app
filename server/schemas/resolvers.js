@@ -75,7 +75,8 @@ const resolvers = {
         gender,
         pronoun,
         personality,
-        physicalDescription
+        physicalDescription,
+        custom
       }
     ) => {
       const character = await Character.create({
@@ -85,7 +86,8 @@ const resolvers = {
         gender,
         pronoun,
         personality,
-        physicalDescription
+        physicalDescription,
+        custom
       });
       return character;
     },
@@ -106,7 +108,8 @@ const resolvers = {
         gender,
         pronoun,
         physicalDescription,
-        personality
+        personality,
+        custom
       }
     ) => {
       const updatedCharacter = await Character.findByIdAndUpdate(
@@ -118,7 +121,8 @@ const resolvers = {
           gender,
           pronoun,
           physicalDescription,
-          personality
+          personality,
+          custom
         },
         { new: true }
       );

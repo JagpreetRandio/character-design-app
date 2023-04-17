@@ -16,16 +16,17 @@ const CharacterSchema = new Schema({
   },
   gender: {
     type: String,
-    // enum: ['male', 'female', 'non-binary','agender', 'genderfluid','other']
   },
   pronoun: {
     type: String,
-    // enum: ['he/him', 'he/they', "she/they", "he/they", "they/he", "he/her", "he/they/she", "she/they/he", "they/she/he", "they/he/she", "they/she", 'she/her', 'they/them']
   },
   physicalDescription: {
     type: String,
   },
   personality: {
+    type: String,
+  },
+  custom: {
     type: String,
   },
 });
