@@ -36,7 +36,6 @@ const CharacterDetails = () => {
   // };
 
   const [custom, setCustom] = useState("");
-  const navigate = useNavigate();
 
   const resetForm = () => {
     setName("");
@@ -48,8 +47,7 @@ const CharacterDetails = () => {
     setPersonality("");
     setPhysicalDescription("");
     setCustom("");
-  }
-
+  };
 
   const {
     loading,
@@ -71,7 +69,7 @@ const CharacterDetails = () => {
         backgroundDescription: initialBackgroundDescription,
         personality: initialPersonality,
         physicalDescription: initialPhysicalDescription,
-        custom: initialCustom
+        custom: initialCustom,
       } = character.character;
       setName(initialName);
       setAge(initialAge);
@@ -93,15 +91,20 @@ const CharacterDetails = () => {
         gender: gender ? gender : character.character.gender,
         pronoun: pronoun ? pronoun : character.character.pronoun,
 
-       // backgroundDescription: backgroundDescription
+        // backgroundDescription: backgroundDescription
         //  ? backgroundDescription
-       //   : character.character.backgroundDescription,
+        //   : character.character.backgroundDescription,
 
-        backgroundDescription: backgroundDescription ? backgroundDescription : character.character.backgroundDescription,
-        personality: personality ? personality : character.character.personality,
-        physicalDescription: physicalDescription ? physicalDescription : character.character.physicalDescription,
+        backgroundDescription: backgroundDescription
+          ? backgroundDescription
+          : character.character.backgroundDescription,
+        personality: personality
+          ? personality
+          : character.character.personality,
+        physicalDescription: physicalDescription
+          ? physicalDescription
+          : character.character.physicalDescription,
         custom: custom ? custom : character.character.custom,
-
       },
     });
     setIsEditing(false);
@@ -138,8 +141,6 @@ const CharacterDetails = () => {
       });
   };
 
-
-
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -159,7 +160,7 @@ const CharacterDetails = () => {
     backgroundDescription: initialBackgroundDescription,
     personality: initialPersonality,
     physicalDescription: initialPhysicalDescription,
-    custom: initialCustom
+    custom: initialCustom,
   } = character.character;
 
   return (
@@ -168,7 +169,7 @@ const CharacterDetails = () => {
       {isEditing ? (
         <div className="card p-4">
           <div className="form-group">
-            <label for="name">Name:</label>
+            <label htmlFor="name">Name:</label>
             <input
               className="form-control"
               type="text"
@@ -179,7 +180,7 @@ const CharacterDetails = () => {
             />
           </div>
           <div className="form-group">
-            <label for="age">Age:</label>
+            <label htmlFor="age">Age:</label>
             <input
               className="form-control"
               type="text"
@@ -190,7 +191,7 @@ const CharacterDetails = () => {
             />
           </div>
           <div className="form-group">
-            <label for="gender">Gender:</label>
+            <label htmlFor="gender">Gender:</label>
             <input
               className="form-control"
               type="text"
@@ -201,7 +202,7 @@ const CharacterDetails = () => {
             />
           </div>
           <div className="form-group">
-            <label for="pronoun">Pronoun:</label>
+            <label htmlFor="pronoun">Pronoun:</label>
             <input
               className="form-control"
               type="text"
@@ -210,26 +211,39 @@ const CharacterDetails = () => {
               value={pronoun}
               onChange={(e) => setPronoun(e.target.value)}
             />
-
           </div>
           <div className="form-group">
-            <label for="description">Description:</label>
-            <textarea
-              className="form-control"
-              id="description"
-              rows="4"
-
-          </label>
-          <label>
-            Backstory:
+            <label htmlFor="background-description">Backstory:</label>
             <input
+              className="form-control"
               type="text"
-
+              id="background-description"
               placeholder={initialBackgroundDescription}
               value={backgroundDescription}
               onChange={(e) => setBackgroundDescription(e.target.value)}
             />
-
+          </div>
+          <div className="form-group">
+            <label htmlFor="personality">Personality:</label>
+            <input
+              className="form-control"
+              type="text"
+              id="personality"
+              placeholder={initialPersonality}
+              value={personality}
+              onChange={(e) => setPersonality(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="physical-description">Physical Description:</label>
+            <input
+              className="form-control"
+              type="text"
+              id="physical-description"
+              placeholder={initialPhysicalDescription}
+              value={physicalDescription}
+              onChange={(e) => setPhysicalDescription(e.target.value)}
+            />
           </div>
           <div style={{ marginTop: "15px" }}>
             <button
@@ -246,52 +260,19 @@ const CharacterDetails = () => {
             </button>
           </div>
         </div>
-
-          </label>
-          <label>
-            Personality:
-            <input
-              type="text"
-              placeholder={initialPersonality}
-              value={personality}
-              onChange={(e) => setPersonality(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Physical Description:
-            <input
-              type="text"
-              placeholder={initialPhysicalDescription}
-              value={physicalDescription}
-              onChange={(e) => setPhysicalDescription(e.target.value)}
-            />
-          </label>
-    
-          
-          <CustomForm>
-          </CustomForm>
-    
-
-          <button
-            onClick={() =>
-              handleUpdate(character.character._id)
-            }
-          >
-            Save
-          </button>
-          <button onClick={() => setIsEditing(false)}>Cancel</button>
-        </>
-
       ) : (
         <div>
-          <p> Character name: {character.character.name}</p>
-          <p> Age: {character.character.age}</p>
-          <p> Gender: {character.character.gender}</p>
-          <p> Pronoun:{character.character.pronoun}</p>
+          <p>Character name: {character.character.name}</p>
+          <p>Age: {character.character.age}</p>
+          <p>Gender: {character.character.gender}</p>
+          <p>Pronoun: {character.character.pronoun}</p>
+          <p>Description: {character.character.backgroundDescription}</p>
 
-          <p> Description: {character.character.backgroundDescription}</p>
-          <div className="d-flex ">
+          <p>Backstory: {character.character.backgroundDescription}</p>
+          <p>Personality: {character.character.personality}</p>
+          <p>Physical Description: {character.character.physicalDescription}</p>
+
+          <div className="d-flex">
             <button className="btn btn-info" onClick={() => setIsEditing(true)}>
               Edit
             </button>
@@ -303,18 +284,6 @@ const CharacterDetails = () => {
             </button>
           </div>
         </div>
-
-          <p> Backstory: {character.character.backgroundDescription}</p>
-          <p> Personality: {character.character.personality}</p>
-          <p> Physical Description: {character.character.physicalDescription}</p>
-          {/* <p> Custom: {character.character.custom}</p> */}
-
-          <br>
-          </br>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={() => handleDelete(character.character._id)}>Delete</button>
-        </>
-
       )}
     </div>
   );
