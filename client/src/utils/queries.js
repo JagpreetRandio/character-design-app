@@ -9,6 +9,9 @@ export const QUERY_CHARACTERS = gql`
       gender
       pronoun
       backgroundDescription
+      personality
+      physicalDescription
+      custom
     }
   }
 `;
@@ -22,6 +25,9 @@ export const QUERY_CHARACTER = gql`
       gender
       pronoun
       backgroundDescription
+      personality
+      physicalDescription
+      custom
     }
   }
 `;
@@ -33,6 +39,9 @@ export const MUTATION_ADD_CHARACTER = gql`
     $gender: String!
     $pronoun: String!
     $backgroundDescription: String!
+    $physicalDescription: String!
+    $personality: String!
+    $custom: String!
   ) {
     addCharacter(
       name: $name
@@ -40,6 +49,9 @@ export const MUTATION_ADD_CHARACTER = gql`
       gender: $gender
       pronoun: $pronoun
       backgroundDescription: $backgroundDescription
+      physicalDescription: $physicalDescription
+      personality: $personality
+      custom: $custom
     ) {
       _id
       name
@@ -47,6 +59,9 @@ export const MUTATION_ADD_CHARACTER = gql`
       gender
       pronoun
       backgroundDescription
+      physicalDescription
+      personality
+      custom
     }
   }
 `;
@@ -60,6 +75,9 @@ export const MUTATION_REMOVE_CHARACTER = gql`
       gender
       pronoun
       backgroundDescription
+      physicalDescription
+      personality
+      custom
     }
   }
 `;
@@ -72,6 +90,9 @@ export const MUTATION_UPDATE_CHARACTER = gql`
     $gender: String!
     $pronoun: String!
     $backgroundDescription: String!
+    $physicalDescription: String!
+    $personality: String!
+    $custom: String!
   ) {
     updateCharacter(
       characterId: $characterId
@@ -80,6 +101,9 @@ export const MUTATION_UPDATE_CHARACTER = gql`
       gender: $gender
       pronoun: $pronoun
       backgroundDescription: $backgroundDescription
+      physicalDescription: $physicalDescription
+      personality: $personality
+      custom: $custom
     ) {
       _id
       name
@@ -87,6 +111,9 @@ export const MUTATION_UPDATE_CHARACTER = gql`
       gender
       pronoun
       backgroundDescription
+      physicalDescription
+      personality
+      custom
     }
   }
 `;
@@ -165,20 +192,20 @@ export const MUTATION_UPDATE_USER = gql`
   }
 `;
 
-export const SAVE_BACKSTORY = gql`
-  mutation saveBackstory($backstory: String!) {
-    saveBackstory(backstory: $backstory) {
-      _id
-      backstory
-    }
-  }
-`;
+// export const SAVE_BACKSTORY = gql`
+//   mutation saveBackstory($backstory: String!) {
+//     saveBackstory(backstory: $backstory) {
+//       _id
+//       backstory
+//     }
+//   }
+// `;
 
-export const GET_BACKSTORY = gql`
-  query GetBackstory {
-    backstory {
-      _id
-      backstory
-    }
-  }
-`;
+// export const GET_BACKSTORY = gql`
+//   query GetBackstory {
+//     backstory {
+//       _id
+//       backstory
+//     }
+//   }
+// `;

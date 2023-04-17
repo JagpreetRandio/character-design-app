@@ -10,12 +10,19 @@ const CharacterForm = ({ onClose, onSubmit }) => {
   const [pronoun, setPronoun] = useState("");
   const [backgroundDescription, setBackgroundDescription] = useState("");
 
+
   // Define a function that handles the form submission
+
+  const [personality, setPersonality] = useState("");
+  const [physicalDescription, setPhysicalDescription] = useState("");
+  
+
   const handleSubmit = (event) => {
     // Prevent the default form submission behavior
     event.preventDefault();
     // Call the onSubmit prop function with the current state values
-    onSubmit(name, Number(age), gender, pronoun, backgroundDescription);
+    onSubmit(name, Number(age), gender, pronoun, backgroundDescription, personality, physicalDescription);
+
   };
 
   // Return JSX that renders a modal with a form for inputting character details
@@ -79,7 +86,32 @@ const CharacterForm = ({ onClose, onSubmit }) => {
                     onChange={(event) => setPronoun(event.target.value)}
                   />
                 </div>
-                <br></br>
+                <br>
+                 </br>
+
+        <div className="text-center">
+          <label htmlFor="personality">Personality:</label>
+          <textarea 
+            id="personality"
+            value={personality}
+            onChange={(event) => setPersonality(event.target.value)}
+          ></textarea>
+        </div>
+
+        <br>
+        </br>
+
+        <div className="text-center">
+          <label htmlFor="physicalDescription">Physical Description:</label>
+          <textarea 
+            id="physicalDescription"
+            value={physicalDescription}
+            onChange={(event) => setPhysicalDescription(event.target.value)}
+          ></textarea>
+        </div>
+
+        <br>
+                </br>
                 <div className="text-center">
                   <label htmlFor="backgroundDescription">
                     Background Description:
@@ -105,6 +137,9 @@ const CharacterForm = ({ onClose, onSubmit }) => {
                   </button>
                 </div>
               </form>
+
+    </div>
+            
             </div>
           </div>
         </div>

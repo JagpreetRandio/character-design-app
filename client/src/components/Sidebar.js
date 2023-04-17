@@ -51,7 +51,9 @@ const Sidebar = () => {
     age,
     gender,
     pronoun,
-    backgroundDescription
+    backgroundDescription,
+    personality,
+    physicalDescription
   ) => {
     await addCharacter({
       variables: {
@@ -60,6 +62,8 @@ const Sidebar = () => {
         gender,
         pronoun,
         backgroundDescription,
+        personality,
+        physicalDescription
       },
     });
     setShowModal(false);
@@ -79,7 +83,10 @@ const Sidebar = () => {
     age,
     gender,
     pronoun,
-    backgroundDescription
+    backgroundDescription,
+    personality,
+    physicalDescription
+    
   ) => {
     await updateCharacter({
       variables: {
@@ -89,6 +96,8 @@ const Sidebar = () => {
         gender,
         pronoun,
         backgroundDescription,
+        personality,
+        physicalDescription
       },
     });
     setSelectedCharacter(null);
@@ -105,11 +114,13 @@ const Sidebar = () => {
 
   return (
     <>
+
       <div className="sidebar bg-secondary" style={{ top: 0, bottom: 0 }}>
         <button className="btn btn-success" onClick={handleNewCharacterClick}>
           New Character
         </button>
         <div className="sidebar-characters text-light">
+
           {data.characters.map((character) => (
             <div
               style={{ cursor: "pointer", padding: "5px", fontSize: "30px" }}

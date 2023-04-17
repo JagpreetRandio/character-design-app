@@ -4,7 +4,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Sidebar from './components/Sidebar';
 import Header from "./components/Header";
-import BackstoryForm from './components/BackstoryForm';
+// import BackstoryForm from './components/BackstoryForm';
+// import CharacterForm from './components/CharacterForm';
+// import CharacterDetails from './components/CharacterDetails';
+// import CustomSectionForm from './components/CustomSectionForm';
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import {
@@ -66,7 +69,6 @@ function App() {
               
                 <Route path={`/character-details/:CharacterId`} element={<CharacterDetails />} />
 
-                  <Route path="/backstory-form" element={<BackstoryForm />} />
                 </Routes>
               </>
             ) : (

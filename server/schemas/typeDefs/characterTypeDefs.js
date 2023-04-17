@@ -8,6 +8,9 @@ const characterTypeDefs = gql`
     gender: String
     pronoun: String
     backgroundDescription: String
+    personality: String
+    physicalDescription: String
+    custom: String
   }
 
   type Query {
@@ -16,9 +19,9 @@ const characterTypeDefs = gql`
   }
 
   type Mutation {
-    addCharacter(name: String!, age: Int!, gender: String!, pronoun: String!, backgroundDescription: String!): Character
+    addCharacter(name: String!, age: Int!, gender: String!, pronoun: String!, backgroundDescription: String!, personality: String!, physicalDescription: String!, custom: String!): Character
     removeCharacter(characterId: ID!): Character
-    updateCharacter(characterId: ID!, name: String!, age: Int!, gender: String!, pronoun: String!, backgroundDescription: String!): Character
+    updateCharacter(characterId: ID!, name: String!, age: Int!, gender: String!, pronoun: String!, backgroundDescription: String!, personality: String!, physicalDescription: String!, custom: String!): Character
   }
 `;
 
