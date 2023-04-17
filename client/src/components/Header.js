@@ -89,7 +89,7 @@ const Header = () => {
               <h1 className="modal-title text-light bg-dark margin-25px">
                 Characterize Credits
               </h1>
-              
+
               {/* Button to close the modal that calls handleCloseModal function when clicked */}
               <button
                 type="button"
@@ -104,7 +104,7 @@ const Header = () => {
               <div className="modal-body text-light justify-content-center">
                 <div>
                   <h2 className="text-light">Rose Cassidy</h2>
-                  <p>--insert credits--</p>
+                  <p>QUERIES, AUTHENTICATION, FRONT-END STYLE AND DESIGN, NEW CHARACTER FORM AND EDIT FORMS, LINKING FRONT AND BACK END</p>
                   <div>
                     <a
                       className="text-light"
@@ -126,7 +126,7 @@ const Header = () => {
                 </div>
                 <div>
                   <h2 className="text-light">Jagpreet Randio</h2>
-                  <p>--insert credits--</p>
+                  <p>GRAPHQL BACK-END SETUP WITH RESOLVERS AND MODELS, CUSTOM FORM</p>
                 </div>
                 <a
                   className="text-light"
