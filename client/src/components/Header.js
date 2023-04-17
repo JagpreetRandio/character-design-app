@@ -4,26 +4,30 @@ import Auth from "../utils/auth";
 import "../assets/css/header.css";
 
 const Header = () => {
+  // Define a state variable called showModal and initialize it to false
   const [showModal, setShowModal] = useState(false);
 
+  // Function that sets the showModal state variable to true when called
   const handleCreditsClick = () => {
     setShowModal(true);
   };
 
+  // Function that sets the showModal state variable to false when called
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
+  // Function to refresh the current page
   function refreshPage() {
     window.location.reload(false);
   }
 
   return (
     <>
-      <Navbar className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <Navbar className="navbar navbar-expand-lg justify-content-space-between fixed-top navbar-dark bg-primary">
         <div
           id="header"
-          className="bg-primary container-fluid align-items-baseline justify-content-around"
+          className="bg-primary container-fluid align-items-baseline justify-content-space-around"
         >
           <Navbar.Brand>
             <h1 className="bg-primary text-light" href="#">
@@ -32,17 +36,19 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav className="ml-auto justify-content-space-around">
               <h5 className="bg-primary text-info">
                 ONE SITE FOR ALL YOUR CHARACTER'S DETAILS!
               </h5>
-              {/* <Navbar.Toggle aria-controls="navbarNav" /> */}
+              {/* Button that calls handleCreditsClick function when clicked */}
               <Button
                 className="btn btn-secondary my-2 my-sm-0"
                 onClick={handleCreditsClick}
               >
                 Credits
               </Button>
+
+              {/* Button that calls Auth.logout function and refreshPage function when clicked */}
               <Button
                 id="logoutBtn"
                 className="btn btn-danger my-2 my-sm-0"
@@ -58,9 +64,10 @@ const Header = () => {
         </div>
       </Navbar>
 
+      {/* The modal that appears when showModal is true */}
       {showModal && (
         <div
-          className="modal"
+          className="modal bg-info"
           tabIndex="-1"
           role="dialog"
           style={{ display: "block" }}
@@ -76,12 +83,14 @@ const Header = () => {
             }}
           >
             <div
-              className="modal-content bg-info border-50px border-dark padding-25px"
+              className="modal-content bg-success border-50px border-dark padding-25px"
               style={{ width: "400px" }}
             >
               <h1 className="modal-title text-light bg-dark margin-25px">
                 Characterize Credits
               </h1>
+              
+              {/* Button to close the modal that calls handleCloseModal function when clicked */}
               <button
                 type="button"
                 className="btn-close"

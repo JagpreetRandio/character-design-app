@@ -1,15 +1,23 @@
-.sidebar{
-    padding-top:100px;
-    width: 200px;
-    margin-bottom: 0px;
+.sidebar {
+  padding-top: 100px;
+  width: 200px;
+  margin-bottom: 0px;
+  background-color: rgba(251, 251, 251, 0);
 }
 @media only screen and (max-width: 768px) {
-    /* Sidebar */
-    .sidebar {
-      position: static;
-      height: auto;
-      width: 100%;
-      padding-top:30px;
-      margin-top: 30px;
-    }
+  /* Sidebar */
+  
+
+  .sidebar {
+    position: static;
+    height: auto;
+    width: 100%;
+    padding-top: 70px;
+  }
+  .sidebar-characters {
+    background-color: none;
+    color: green;
+    display: flex;
+    flex-direction: column;
+  }
 }

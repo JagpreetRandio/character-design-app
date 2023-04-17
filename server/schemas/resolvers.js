@@ -34,7 +34,7 @@ const resolvers = {
     addUser: async (parent, { name, email, password }) => {
 
       // const email = await User.create ({email})
-      console.log("WORDS",name, email, password)
+      // console.log(name, email, password)
       const user = await User.create({ name, email, password });
       const token = signToken(user);
 
@@ -92,7 +92,7 @@ const resolvers = {
 
     removeCharacter: async (parent, {characterId: id}) => {
 
-      console.log("CharacterID: ", id);
+      // console.log("CharacterID: ", id);
       return Character.findByIdAndDelete(id);
     },
 

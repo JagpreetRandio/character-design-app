@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 import {LOGIN_USER} from '../utils/queries'
 
-
+// Creating a functional component named Login with props as input parameter
 function Login(props) {
+  // Declaring state variables formState and login, and destructuring error from login
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_USER);
 
+  // Handling the form submit event and setting auth token if successful
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -21,6 +23,7 @@ function Login(props) {
     }
   };
 
+  // Handling the change in input fields and updating formState
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -29,6 +32,7 @@ function Login(props) {
     });
   };
 
+  // JSX that will be rendered to the DOM
   return (
     <div className="container my-1">
       <Link to="/signup">← Go to Signup</Link>
@@ -68,4 +72,5 @@ function Login(props) {
   );
 }
 
+// Exporting the Login component as default
 export default Login;
