@@ -28,7 +28,7 @@ import './assets/css/index.css'
 
 // Create a HTTP link to the GraphQL server
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 // Create an auth link that adds the authorization token to the headers
