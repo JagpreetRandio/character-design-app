@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 function Custom() {
+  
   const [fields, setFields] = useState([{ label: '', type: 'text', value: '' }]);
   const [formData, setFormData] = useState({});
 
@@ -55,15 +56,16 @@ function Custom() {
                 handleChangeField(index, { ...field, value: event.target.value })
               }
             />
-            <button type="button" onClick={() => handleRemoveField(index)}>
+            <button className= "btn btn-primary" type="button" onClick={() => handleRemoveField(index)}>
               Remove Field
             </button>
           </div>
         ))}
-        <button type="button" onClick={handleAddField}>
+        <button className= "btn margin-10px btn-info" type="button" onClick={handleAddField}>
           Add field
         </button>
-        <button type="submit">Submit</button>
+        
+        <button className= "btn margin-10px btn-danger" type="submit">Submit</button>
       </form>
     </>
   );

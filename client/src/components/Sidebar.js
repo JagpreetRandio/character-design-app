@@ -63,7 +63,8 @@ const Sidebar = () => {
         pronoun,
         backgroundDescription,
         personality,
-        physicalDescription
+        physicalDescription,
+        custom:""
       },
     });
     setShowModal(false);
@@ -97,7 +98,9 @@ const Sidebar = () => {
         pronoun,
         backgroundDescription,
         personality,
-        physicalDescription
+        physicalDescription,
+        custom: ""
+        
       },
     });
     setSelectedCharacter(null);

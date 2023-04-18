@@ -245,6 +245,9 @@ const CharacterDetails = () => {
               onChange={(e) => setPhysicalDescription(e.target.value)}
             />
           </div>
+          <CustomForm>
+            
+          </CustomForm>
           <div style={{ marginTop: "15px" }}>
             <button
               className="btn margin-10px btn-info"

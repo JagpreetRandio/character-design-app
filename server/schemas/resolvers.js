@@ -110,6 +110,7 @@ const resolvers = {
         physicalDescription,
         personality,
         custom
+        
       }
     ) => {
       const updatedCharacter = await Character.findByIdAndUpdate(
@@ -123,6 +124,7 @@ const resolvers = {
           physicalDescription,
           personality,
           custom
+          
         },
         { new: true }
       );
