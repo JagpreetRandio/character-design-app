@@ -68,7 +68,7 @@ Github- https://github.com/JagpreetRandio
 
 Rose Cassidy 
 
-Email- 
+Email- rosecassidy1303@gmail.com
 
 Github- https://github.com/rcass13 
 
