@@ -269,7 +269,6 @@ const CharacterDetails = () => {
           <p>Age: {character.character.age}</p>
           <p>Gender: {character.character.gender}</p>
           <p>Pronoun: {character.character.pronoun}</p>
-          <p>Description: {character.character.backgroundDescription}</p>
 
           <p>Backstory: {character.character.backgroundDescription}</p>
           <p>Personality: {character.character.personality}</p>
