@@ -18,13 +18,13 @@ const server = new ApolloServer({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Serve static files from the client build folder
-app.use(express.static(path.join(__dirname, '../client/build')));
-
 // API endpoint
 app.get('/api/login', (req, res) => {
   res.send({ message: 'Hello from the server!' });
 });
+
+// Serve static files from the client build folder
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Serve the client-side app for all other requests
 app.get('*', (req, res) => {
