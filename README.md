@@ -37,6 +37,16 @@ add deployment link here
 
 ## Screenshots/videos 
 
+<img width="1284" alt="Screenshot 2023-04-18 at 10 47 42 PM" src="https://user-images.githubusercontent.com/115323708/232979218-25695474-764a-4eae-b455-b08dee783736.png">
+
+<img width="1283" alt="Screenshot 2023-04-18 at 10 48 03 PM" src="https://user-images.githubusercontent.com/115323708/232979327-a01ca8dd-99ac-439d-9b37-07f6b40f5488.png">
+
+<img width="1438" alt="Screenshot 2023-04-18 at 10 50 38 PM" src="https://user-images.githubusercontent.com/115323708/232979379-abde0137-c1bf-4c43-a2bf-de31a14bd25e.png">
+
+<img width="1439" alt="Screenshot 2023-04-18 at 10 52 05 PM" src="https://user-images.githubusercontent.com/115323708/232979407-907d66e1-6d35-4a45-94cd-d061e659624a.png">
+
+<img width="1440" alt="Screenshot 2023-04-18 at 10 52 19 PM" src="https://user-images.githubusercontent.com/115323708/232979467-febf7d33-0329-4ef0-aa88-172f020fc835.png">
+
 
 
 ## Usage 
