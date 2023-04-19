@@ -37,6 +37,8 @@ add deployment link here
 
 ## Screenshots/videos 
 
+https://user-images.githubusercontent.com/115323708/232981706-0ff16229-d580-4ae1-8bcb-ff4e6fdcf161.mp4
+
 <img width="1284" alt="Screenshot 2023-04-18 at 10 47 42 PM" src="https://user-images.githubusercontent.com/115323708/232979218-25695474-764a-4eae-b455-b08dee783736.png">
 
 <img width="1283" alt="Screenshot 2023-04-18 at 10 48 03 PM" src="https://user-images.githubusercontent.com/115323708/232979327-a01ca8dd-99ac-439d-9b37-07f6b40f5488.png">
