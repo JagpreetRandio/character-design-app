@@ -33,7 +33,7 @@ To install the Characterize application, follow the steps below:
 
 ## Deployment
 
-add deployment link here 
+https://characterize.herokuapp.com
 
 ## Screenshots/videos 
 
